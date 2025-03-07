@@ -2,6 +2,30 @@
     box-sizing: border-box;
 }
 
+:root{
+    /* font color */
+  
+    /* font size */
+    --font-size-large:3.5rem;
+    --font-size-extra-big:3rem;
+    --font-size-big:2.875rem;
+    --font-size-medi:2.2rem;
+  
+    --font-size-section-title: 1.375rem;
+    --font-size-section-paragraph: 1.015rem;
+  
+    --font-size-medi-normal:1.5rem;
+    --font-size-normal:1.1rem;
+    --font-size-small:0.775rem;
+    --font-size-extra-small:0.575rem;
+  
+    /* gap */
+    --padding-gap:1.5rem;
+  
+    /* transition */
+    --transition-bouncy:linear(0 0%, 0.22 2.1%, 0.86 6.5%, 1.11 8.6%, 1.3 10.7%, 1.35 11.8%, 1.37 12.9%, 1.37 13.7%, 1.36 14.5%, 1.32 16.2%, 1.03 21.8%, 0.94 24%, 0.89 25.9%, 0.88 26.85%, 0.87 27.8%, 0.87 29.25%, 0.88 30.7%, 0.91 32.4%, 0.98 36.4%, 1.01 38.3%, 1.04 40.5%, 1.05 42.7%, 1.05 44.1%, 1.04 45.7%, 1 53.3%, 0.99 55.4%, 0.98 57.5%, 0.99 60.7%, 1 68.1%, 1.01 72.2%, 1 86.7%, 1 100%);
+  }
+
 body{
 
     margin: 0;
@@ -16,16 +40,17 @@ body{
 /*MAIN*/
 
 
-.main{
-    width: 100%;
-    height: 100%;
-
-    /*LA CREMA*/
+.main {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    grid-template-rows:repeat(6, 1fr);
+    grid-template-areas: 
+        "side header header"
+        "side content content"
+        "side content content"
+        "footer footer footer";
+    grid-template-columns: 20% 1fr 1fr;
+    grid-template-rows: auto 1fr 1fr auto;
+    min-height: 100vh;
 }
-
 
 .main div{
 
@@ -38,18 +63,26 @@ body{
 
 
 .header{
-    grid-area: 1 / 2 / 2 / -1;
+
+    grid-area: header;
+    
+
     background-color: white;
     box-shadow: 3px 3px 30px 10px rgb(180, 179, 179);
     padding: 2vh;
-    display:  flex;
-    gap: 3vh;
-
-    justify-content: center;
+    display: flex;
     align-items: center;
+    gap: 2vh;
+    justify-content: space-between;
 }
-.p{
-    flex-grow: 1;
+
+
+.header p{
+    flex: 1 0 auto;
+    font-weight: bolder;
+    font-size: larger;
+    font-family: 'Courier New', Courier, monospace;
+    font-style: italic;
 }
 
 .search-button{
@@ -72,15 +105,31 @@ body{
     display: flex;
     flex-grow: 2;
     gap: 2vh;
+    justify-content: center;
 }
 
 .search-bar input{
     width: 70%;
     border-radius: 30px;
+    min-width: 300px;
 }
 
 .log{
+    
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 1vh;
+    
     flex-grow: 1;
+    text-align: center;
+
+    
+}
+
+.profile-img{
+    width: 5vh;
+    height: 5vh;
 }
 
 
@@ -88,93 +137,300 @@ body{
 
 /*SIDE*/
 
+.side {
+    grid-area: side;
+    min-width: 10rem;
 
-.side{
-    grid-area: 1 / 1 / 7 / 1;
-    background-color: rgb(55, 90, 202);
+    background-color: rgb(24, 132, 204);
     padding: 5%;
-   
+    color: white;
     display: flex;
     flex-direction: column;
+    gap: 2vh;
+
+    font-weight: bolder;
 }
 
 .side a{
-    color: white;
 
+    color: white;
     text-decoration: none;
 }
 
 
+.side .side-title{
+    display: flex;
+    align-items: center;
+    margin-bottom: 20%;
+}
 
-/*CONTENT*/
-
-
-
-.content{
-    grid-area: 2 / 2 / 6 / -1;
-
-
-    display: grid;
-
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns:repeat(3 ,1fr) ;
+.side-title p{
     
-    grid-gap: 1vh;
-    box-sizing: border-box;
-
-
-    padding: 1vh;
+    font-size: 1.5rem
+}
+.side a{
+    height: 5vh;
+    display: flex;
+    align-items: center;
 }
 
 
-.content #c1{
-    grid-area: 1 / 1 / 3 / 3;
+.dash-img0{
+    width: 20%;
+    height: 60%;
+}
+
+.dash-img{
+    width: 20%;
+    height: 60%;
+}
+
+
+
+    /* 🔹 CONTENIDO */
+.content {
+    grid-area: content;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px,1fr)) ;
+    grid-gap: 3vh;
+    padding: 3vh;
+    
+    grid-template-areas:
+            "c1 c1 c2"
+            "c1 c1 c3"
+            "c1 c1 no";
+    
+    
+
+}
+/* 🔹 TARJETAS */
+
+
+#c1 {
+    grid-area: c1;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: 100px 1fr 1fr;
+
+    grid-template-areas:
+            "h3 h3"
+            "c11 c11"
+            "c11 c11";
+
+
+    grid-gap: 3vh;
+}
+
+#c1 h3{
+    grid-area: h3;
+}
+
+.c1-content { 
+    padding: 2vh;   
+    background-color: white;
+    border-left: 20px solid rgb(209, 161, 1);
+    border-radius: 20px;
+    font-size: calc(10px + 0.75vw);
+    color: gray;
+}
+.c1-content p{ 
+    color: black;
+    font-weight: bold;
+}
+
+#c2 {
+    grid-area: c2;
+}
+
+#c3 {
+    grid-area: c3;
     display: flex;
     flex-direction: column;
-    
+    gap: 1vh;
 }
-
-#c1 .c1-box{
-    display: grid;
-    height: 50vh;
-    grid-template-rows: repeat(2, 1fr);
-    grid-template-columns:repeat(2 ,1fr) ;
-    grid-gap: 2vh;
-
+.twitter{
+    display: flex;
+    gap: 1vh;
+    border: 2px solid black;
+    align-items: center;
 
 }
-
-#c1 .c1-content{
-    padding: 2vh;
-    background-color: white;
-    border-left: 5px solid rgb(95, 179, 182);
-    border-radius: 30px;
-}
-
-
-.content #c2,#c3{
-    
-    font-size: calc(18px + 0.5vw);
+.twitter b{
     color: black;
-    background-color: aliceblue;
-    border-radius: 30px;
-    padding: 2vh;   
-    min-width: 300px;
+}
+.twitter-img{
+    width: 10%;
+    height:auto;
 }
 
 
+#c2 div, #c3 div{
+    
+    background-color: white;
+    border-radius: 15px;
+    border-left: 15px solid rgb(44, 184, 160);
+
+    padding: 2vh;
+    font-family: 'Courier New', Courier, monospace;
+    font-size: large;
+    color: rgb(94, 94, 94);
 
 
+}
 
 
 /*FOOTER*/ 
 
-
-.footer{
-    grid-area: 6 / 2 / 7 / -1;
-    background-color: rgb(211, 221, 123);
+.footer {
+    grid-area: footer;
+    background-color: rgb(0, 0, 0);
+    text-align: center;
+    padding: 10px;
+    color: white;
+    font-size: medium;
 }
 
-
-
 /* QUERIES */
+
+/* Diseño de 2 columnas cuando el espacio se reduce */
+@media (max-width: 1400px) {
+    .main {
+        display: grid;
+        grid-template-areas: 
+           
+            "header header header"
+            "side side side"
+            "content content content"
+            "content content content"
+            "footer footer footer";
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-template-rows:  auto auto 1fr 1fr 2%;
+        min-height: 100vh;
+    }
+
+    .side{
+        display: flex;
+        flex-direction: row;
+        margin: 0px;
+        margin-bottom: 0px;
+        align-items: center;
+    }
+
+
+    .side {
+        min-width: none;
+        padding: 5%;
+        padding-top: 0px;
+        padding-bottom: 0px;
+        color: white;
+    }
+
+
+    .side .side-title{
+        margin-bottom: 0%;
+    }
+
+    .side-title p{
+        font-size: 1.5rem
+    }
+
+    .side a{
+        height: 1vh;
+        display: flex;
+        align-items: center;
+    }
+
+
+    .dash-img0{
+        width: 50%;
+        height:50%;
+    }
+
+    .dash-img{
+        width: 50%;
+        height: 50%;
+    }
+    .header{
+        
+        padding: 2vh;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        grid-template-rows: 1fr 1fr;
+        grid-template-areas: 
+        "z1 z3"
+        "z2 z2";
+        gap: 2vh;
+
+       
+        
+    }
+
+
+    .header p{
+        flex-grow: 1;
+        text-wrap: wrap;
+        font-size: calc(12px + 1.5vw);
+        grid-area: z1;
+        justify-self: center;
+        
+    }
+
+    .header .search-bar{
+        grid-area: z2;
+        
+    }
+
+    .header .log{
+        grid-area: z3;
+        justify-self: center;
+    }
+
+    .content {
+        
+        grid-template-areas:
+                "c1 c1"
+                "c1 c1"
+                "c2 c3";
+        
+    
+    }
+
+    
+    
+}
+
+/* Diseño en una sola columna para pantallas pequeñas */
+@media (max-width: 799px) {
+    .side {
+        grid-area: side;
+        min-width: 1rem;
+        font-size: calc(10px + 1.5vw);
+
+    }
+    .content {
+        grid-template-columns: 1fr !important;
+        grid-template-areas:
+            "c1"
+            "c1"
+            "c1"
+            "c1"
+            "c2"
+            "c3" !important;
+    }
+
+    #c1 {
+        grid-area: c1;
+        display: grid;
+        grid-template-columns: 1fr;
+    
+        grid-template-areas:
+                "h3"
+                "c1"
+                "c1"
+                "c1"
+                "c1";
+    
+    
+        grid-gap: 3vh;
+    }
+}
